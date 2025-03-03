@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaBagShopping } from "react-icons/fa6";
-import { FaMobileAlt } from "react-icons/fa";
-import { GiHouseKeys } from "react-icons/gi";
-import { MdOutlinePets } from "react-icons/md";
-import { IoMdWallet } from "react-icons/io";
+// import { FaBagShopping } from "react-icons/fa6";
+// import { FaMobileAlt } from "react-icons/fa";
+// import { GiHouseKeys } from "react-icons/gi";
+// import { MdOutlinePets } from "react-icons/md";
+// import { IoMdWallet } from "react-icons/io";
 
 export default function CustomHeroSection() {
   const images = [
