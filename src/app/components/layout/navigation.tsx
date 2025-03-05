@@ -1,17 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "../../utils/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { BiX, BiMenu } from "react-icons/bi";
 import { FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
+import { RxAvatar } from "react-icons/rx";
+import { BsCart4 } from "react-icons/bs";
 
 export default function Navigation() {
     const pathname = usePathname();
+    const [total, setLength] = useState(0)
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+      useEffect(() => {
+        const storedCart = localStorage.getItem("cartItems");
+        if (storedCart) {
+            setLength(JSON.parse(storedCart));
+        }
+      }, []);
+    // console.log(total, 'this is total')
 
     return (
         <nav className="w-full">
@@ -23,29 +34,33 @@ export default function Navigation() {
                 <Image
                     src="/WhatsApp Image 2025-03-03 at 11.30.59 PM.jpeg"
                     alt="WhatsApp Image"
-                    width={48}  
-                    height={48} 
+                    width={48}
+                    height={48}
                     className="h-12 w-auto"
                 />
 
-             <div className="hidden md:flex gap-8">
-  {navLinks.map(({ href, label }) => (
-    <Link
-      key={href}
-      href={href}
-      className={`text-xl  ${
-        pathname === href
-          ? "text-primary font-bold border-b-2 pb-1 border-primary scale-110"
-          : "font-semibold"
-      }`}
-    >
-      {label}
-    </Link>
-  ))}
+                <div className="hidden md:flex gap-8">
+                    {navLinks.map(({ href, label }) => (
+                        <Link
+                            key={href}
+                            href={href}
+                            className={`text-xl  ${pathname === href
+                                    ? "text-primary font-bold border-b-2 pb-1 border-primary "
+                                    : "font-semibold"
+                                }`}
+                        >
+                            {label}
+                        </Link>
+                    ))}
+                </div>
+<div className="flex items-center gap-5">
+    <div className="relative">
+
+                <BsCart4 onClick={() => router.push('/addToCart')} size={40} className="text-primary"/>
+                    <p className="absolute left-7 -top-1 bg-green-500 rounded-full text-white px-1">{total.length}</p>
+    </div>
+                <RxAvatar size={40} className="text-primary" />
 </div>
-
-
-                <FaPhoneAlt size={30} className="text-blue-900 text-2xl md:text-3xl font-bold hidden md:block" />
 
                 <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
                     {isOpen ? <BiX size={28} /> : <BiMenu size={28} />}

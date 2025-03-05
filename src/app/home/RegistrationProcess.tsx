@@ -10,7 +10,7 @@ export default function RegistrationProcess() {
     return (
         <div className="relative w-full h-screen flex flex-col lg:flex-row">
             <Image 
-                src="/pexels-busra-altin-60338887-30780540.jpg" 
+                src="/pexels-anytiffng-2097616 (1).jpg" 
                 alt="Background" 
                 fill
                 className="object-cover -z-10"

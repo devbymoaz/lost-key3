@@ -7,7 +7,6 @@ export default function OurMission() {
   return (
     <section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-12  mx-auto">
       
-      {/* Text Animation - Comes from Left */}
       <motion.div
         className="md:w-1/2 text-center md:text-left"
         initial={{ opacity: 0, x: -100 }}
@@ -21,7 +20,6 @@ export default function OurMission() {
         </p>
       </motion.div>
 
-      {/* Image Animation - Comes from Right */}
       <motion.div
         className="md:w-1/2 flex justify-center mt-8 md:mt-0"
         initial={{ opacity: 0, x: 100 }}
@@ -30,7 +28,7 @@ export default function OurMission() {
       >
         <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-56 sm:h-64 md:h-80">
           <Image 
-            src="/wmremove-transformed (1) 1.png" 
+            src="/pexels-pavel-danilyuk-7937958.jpg" 
             alt="Our Mission" 
             layout="fill"
             objectFit="cover"
