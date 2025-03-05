@@ -13,16 +13,17 @@ import { BsCart4 } from "react-icons/bs";
 
 export default function Navigation() {
     const pathname = usePathname();
-    const [total, setLength] = useState(0)
+    const [total, setLength] = useState<string[]>([]);
+
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
-      useEffect(() => {
+    useEffect(() => {
         const storedCart = localStorage.getItem("cartItems");
         if (storedCart) {
-            setLength(JSON.parse(storedCart));
+            setLength(JSON.parse(storedCart).length);  
         }
-      }, []);
-    // console.log(total, 'this is total')
+    }, []);
+    
 
     return (
         <nav className="w-full">
@@ -57,7 +58,7 @@ export default function Navigation() {
     <div className="relative">
 
                 <BsCart4 onClick={() => router.push('/addToCart')} size={40} className="text-primary"/>
-                    <p className="absolute left-7 -top-1 bg-green-500 rounded-full text-white px-1">{total.length}</p>
+                    <p className="absolute left-7 -top-1 bg-green-500 rounded-full text-white px-1">{total}</p>
     </div>
                 <RxAvatar size={40} className="text-primary" />
 </div>
