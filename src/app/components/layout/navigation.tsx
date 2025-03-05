@@ -23,22 +23,27 @@ export default function Navigation() {
                 <Image
                     src="/WhatsApp Image 2025-03-03 at 11.30.59 PM.jpeg"
                     alt="WhatsApp Image"
-                    width={48} // Adjust based on your needs
-                    height={48} // Adjust based on your needs
+                    width={48}  
+                    height={48} 
                     className="h-12 w-auto"
                 />
 
-                <div className="hidden md:flex gap-6">
-                    {navLinks.map(({ href, label }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            className={`text-xl ${pathname === href ? "text-primary font-bold" : "font-semibold"}`}
-                        >
-                            {label}
-                        </Link>
-                    ))}
-                </div>
+             <div className="hidden md:flex gap-8">
+  {navLinks.map(({ href, label }) => (
+    <Link
+      key={href}
+      href={href}
+      className={`text-xl  ${
+        pathname === href
+          ? "text-primary font-bold border-b-2 pb-1 border-primary scale-110"
+          : "font-semibold"
+      }`}
+    >
+      {label}
+    </Link>
+  ))}
+</div>
+
 
                 <FaPhoneAlt size={30} className="text-blue-900 text-2xl md:text-3xl font-bold hidden md:block" />
 

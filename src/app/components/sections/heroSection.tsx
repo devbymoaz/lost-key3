@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Button from "../common/button/Button";
 // import { FaBagShopping } from "react-icons/fa6";
 // import { FaMobileAlt } from "react-icons/fa";
 // import { GiHouseKeys } from "react-icons/gi";
@@ -29,7 +30,7 @@ export default function CustomHeroSection() {
 
 
   return (
-    <div className="relative w-full h-[84vh] overflow-hidden">
+    <div className="relative w-full h-[50vh] overflow-hidden">
       <div className="absolute inset-0">
         <motion.div
           key={currentIndex}
@@ -65,36 +66,33 @@ export default function CustomHeroSection() {
       </div>
 
       {/* Hero Text */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
-        <motion.h1
-          className="text-3xl sm:text-4xl md:text-6xl font-bold"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          Online Lost And Found
-        </motion.h1>
-        <motion.p
-          className="text-base sm:text-lg md:text-2xl mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-        >
-          The fastest Lost and Found office in the world
-        </motion.p>
+      <div className="absolute inset-0 flex flex-col justify-between items-center text-white text-center px-4 py-12">
+      <div>
+  <motion.h1
+  style={{ textShadow: "2px 2px 15px rgba(0, 0, 0, 1)" }}
+    className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-xl"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.5 }}
+  >
+    Online Lost And Found
+  </motion.h1>
+
+  <motion.p
+  style={{ textShadow: "6px 6px 10px rgba(0, 0, 0, 1)" }}
+    className="text-base sm:text-lg md:text-2xl mt-4 font-bold text-white drop-shadow-lg"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.8 }}
+  >
+    The fastest Lost and Found office in the world
+  </motion.p>
+</div>
+
+        <Button className="text-white rounded-full bg-primary border border-white">To the shop</Button>
       </div>
 
-      {/* Bottom Section */}
-      {/* <div className="absolute bottom-0 w-full bg-primary/70 backdrop-blur-sm py-4">
-        <div className="flex flex-wrap gap-8 sm:gap-10 md:gap-16 justify-center items-center text-white px-4">
-          {data.map((val, ind) => (
-            <div key={ind} className="flex flex-col items-center">
-              {val.icon}
-              <p className="text-sm sm:text-base md:text-xl">{val.title}</p>
-            </div>
-          ))}
-        </div>
-      </div> */}
+
     </div>
   );
 }
