@@ -13,17 +13,16 @@ export default function Checkout() {
     paymentMethod: "credit-card",
   });
 
-  // Handle form change
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  setForm({ ...form, [e.target.name]: e.target.value });
+};
 
-  // Handle Checkout Submit
-  const handleCheckout = (e) => {
-    e.preventDefault();
-    alert("Order placed successfully!");
-    router.push("/");
-  };
+const handleCheckout = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  alert("Order placed successfully!");
+  router.push("/");
+};
+
 
   return (
     <div className="container mx-auto p-6">
