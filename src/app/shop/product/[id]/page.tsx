@@ -10,7 +10,6 @@ export default function ProductDetail() {
   const { id } = useParams();
   const product = shopItems.find((item) => item.id === Number(id));
 
-  // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -45,7 +44,7 @@ export default function ProductDetail() {
       userDetails: formData,
     };
 
-    let cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     cartItems.push(newCartItem);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 

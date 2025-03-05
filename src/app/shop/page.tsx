@@ -1,4 +1,3 @@
-import NewsHeroSection from "../components/sections/newsHeroSection";
 import ShopCard from "../components/sections/ShopCard";
 import ShopSection from "../components/sections/ShopSection";
 import { shopItems } from "../utils/data";
