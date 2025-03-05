@@ -8,7 +8,16 @@ import Image from "next/image";
 
 export default function AddToCart() {
   const router = useRouter();
-  const [cartItems, setCartItems] = useState([]);
+  type CartItem = {
+    id: string | number;
+    title: string;
+    price: number;
+    image: string;
+    quantity: number;
+  };
+  
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cartItems");
@@ -17,11 +26,12 @@ export default function AddToCart() {
     }
   }, []);
 
-  const removeItem = (id) => {
+  const removeItem = (id: string | number) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
   };
+  
 
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
