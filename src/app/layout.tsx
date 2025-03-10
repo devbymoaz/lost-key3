@@ -19,9 +19,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}> 
-        <Navigation />
-        <main>{children}</main>
+      <body className={montserrat.className}>
+        <div className="relative">
+          <div className='absolute top-0 w-full'>
+            <Navigation />
+          </div>
+          <main >{children}</main>
+        </div>
         <Footer />
         <footer className="bg-secondary text-white p-4 text-center">
           <p>&copy; {new Date().getFullYear()} Lost Key. All rights reserved.</p>

@@ -1,76 +1,174 @@
 "use client";
-import { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { motion } from "framer-motion";
+import NewsHeroSection from "../components/sections/newsHeroSection";
+import Image from "next/image";
 
-const faqs = [
-  {
-    question: "What is this platform about?",
-    answer:
-      "Our platform helps users efficiently manage lost and found items. Whether you've lost something or found an item, you can report and search for it here.",
-  },
-  {
-    question: "How can I report a lost item?",
-    answer:
-      "To report a lost item, navigate to the 'Report Lost Item' section, provide necessary details including item description, last seen location, and your contact details. Our system will match your report with found items.",
-  },
-  {
-    question: "How can I report a found item?",
-    answer:
-      "If you've found an item, go to the 'Report Found Item' page and submit details such as item type, description, and where you found it. We will notify users who have reported similar lost items.",
-  },
-  {
-    question: "How does the matching system work?",
-    answer:
-      "Our platform uses an intelligent matching system that compares lost and found reports based on keywords, locations, and timestamps. If there's a match, both parties are notified via email or on their dashboard.",
-  },
-  {
-    question: "Is there a way to verify ownership?",
-    answer:
-      "Yes! When someone claims a found item, they are required to provide proof of ownership, such as purchase receipts, unique identifiers, or images taken previously.",
-  },
-  {
-    question: "What if I receive a false claim?",
-    answer:
-      "If you suspect a false claim, do not hand over the item. Instead, contact support with relevant details, and we will assist in verifying the rightful owner.",
-  },
-];
-
-export default function Page() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
+export default function AboutUsPage() {
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-4xl font-bold text-center text-primary mb-6">FAQs - Instructions</h1>
+    <>
+      {/* Hero Section */}
+      <NewsHeroSection 
+        imageSrc="/pexels-mark-thomas-2149938474-31044308.jpg" 
+        title="About Us" 
+        subtitle="Learn more about our journey and values."
+      />
 
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div key={index} className="border border-primary rounded-lg">
-            <button
-              onClick={() => toggleFAQ(index)}
-              className="w-full flex justify-between items-center p-4 bg-primary text-white text-left text-lg font-semibold"
-            >
-              {faq.question}
-              {openIndex === index ? (
-                <FaChevronUp className="text-xl" />
-              ) : (
-                <FaChevronDown className="text-xl" />
-              )}
-            </button>
+      {/* Our Mission & Vision */}
+      <motion.section 
+        className="container mx-auto py-16 px-6"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.h2 
+          className="text-3xl md:text-5xl font-bold text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+        >
+          Our Mission & Values
+        </motion.h2>
 
-            <div
-              className={`overflow-hidden transition-all duration-300 ${
-                openIndex === index ? "max-h-40 p-4 bg-white text-gray-800" : "max-h-0"
-              }`}
-            >
-              {faq.answer}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+        <motion.p 
+          className="text-lg text-gray-700 text-center max-w-3xl mx-auto"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        >
+          At Lost Key, we are dedicated to providing a reliable and user-friendly solution for lost key recovery. We believe in innovation and trust, ensuring privacy and security while fostering community engagement.
+        </motion.p>
+      </motion.section>
+
+      {/* Our Values */}
+      <motion.section 
+        className="w-full h-screen flex bg-gray-100"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="w-1/2 h-full relative">
+          <Image 
+            src="/pexels-busra-altin-60338887-30780540.jpg" 
+            alt="Our Values" 
+            layout="fill" 
+            objectFit="cover" 
+            priority
+          />
+        </div>
+        <div className="w-1/2 h-full flex items-center justify-center p-10">
+          <motion.div 
+            className="max-w-lg"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Values</h2>
+            <ul className="text-lg text-gray-700 list-disc pl-5">
+              <li><strong>Privacy & Security:</strong> No personal data is shared during key recovery.</li>
+              <li><strong>Innovation:</strong> Our QR code system simplifies lost key retrieval.</li>
+              <li><strong>Trust & Community:</strong> Rewarding those who help return lost keys.</li>
+            </ul>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* How It Works */}
+      <motion.section 
+        className="container mx-auto py-16 px-6 text-center"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold mb-6">How It Works</h2>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
+          Our platform simplifies lost key recovery with a seamless process.
+        </p>
+        <div className="grid md:grid-cols-3 gap-6">
+          <motion.div 
+            className="bg-white p-6 shadow-lg rounded-lg"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-xl font-semibold mb-2">🔑 Register Your Keys</h3>
+            <p className="text-gray-700">Assign a unique QR code to your keys for easy identification.</p>
+          </motion.div>
+          <motion.div 
+            className="bg-white p-6 shadow-lg rounded-lg"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <h3 className="text-xl font-semibold mb-2">📲 Scan & Notify</h3>
+            <p className="text-gray-700">Finders scan the QR code to notify the owner.</p>
+          </motion.div>
+          <motion.div 
+            className="bg-white p-6 shadow-lg rounded-lg"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            <h3 className="text-xl font-semibold mb-2">🔁 Get Your Keys Back</h3>
+            <p className="text-gray-700">Retrieve your keys without sharing personal details.</p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Privacy & Security */}
+      <motion.section 
+        className="container mx-auto py-16 px-6 text-center bg-gray-100"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold mb-6">Privacy & Security</h2>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          We ensure your privacy by using secure QR codes, eliminating the need for personal data exchange.
+        </p>
+      </motion.section>
+
+    {/* Section 2 - Content Left, Image Right */}
+    <motion.section 
+        className="w-full h-screen flex"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="w-1/2 h-full flex items-center justify-center bg-gray-200">
+          <motion.div 
+            className="max-w-lg text-center"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Why Choose Us?</h2>
+            <p className="text-lg text-gray-700">
+              Our expertise, commitment to quality, and customer-first approach make us the perfect choice for your needs.
+            </p>
+          </motion.div>
+        </div>
+        <div className="w-1/2 h-full relative">
+          <Image 
+            src="/pexels-anytiffng-2097616 (1).jpg" 
+            alt="Section 8" 
+            layout="fill" 
+            objectFit="cover" 
+            priority
+          />
+        </div>
+      </motion.section>
+      {/* Community Engagement */}
+      <motion.section 
+        className="container mx-auto py-16 px-6 text-center"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold mb-6">Community Engagement</h2>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          We reward individuals who help return lost keys, fostering trust and engagement.
+        </p>
+      </motion.section>
+    </>
   );
 }

@@ -12,32 +12,42 @@ import { RxAvatar } from "react-icons/rx";
 import { BsCart4 } from "react-icons/bs";
 
 export default function Navigation() {
+    const [isScroll, setIsScroll] = useState(false);
     const pathname = usePathname();
     const [total, setLength] = useState<string[]>([]);
-
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
+
+    // Track Scroll Position
     useEffect(() => {
-        const storedCart = localStorage.getItem("cartItems");
-        if (storedCart) {
-            setLength(JSON.parse(storedCart).length);  
-        }
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScroll(true);
+            } else {
+                setIsScroll(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-    
 
     return (
-        <nav className="w-full">
+        <nav
+            className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${isScroll ? "bg-white shadow-lg" : "bg-transparent"
+                }`}
+        >
             <div className="bg-secondary p-2 text-center text-white text-sm sm:text-base">
                 Free shipping from 20€ | Delivery time 1-3 working days
             </div>
 
-            <div className="px-6 md:px-12 flex bg-white shadow-md w-full items-center justify-between py-4">
+            <div className=" px-6 md:px-16 flex w-full items-center justify-between py-4">
                 <Image
-                    src="/WhatsApp Image 2025-03-03 at 11.30.59 PM.jpeg"
+                    src="/next.svg"
                     alt="WhatsApp Image"
                     width={48}
                     height={48}
-                    className="h-12 w-auto"
+                    className="h-6 w-auto text-white"
                 />
 
                 <div className="hidden md:flex gap-8">
@@ -45,23 +55,18 @@ export default function Navigation() {
                         <Link
                             key={href}
                             href={href}
-                            className={`text-xl  ${pathname === href
-                                    ? "text-primary font-bold border-b-2 pb-1 border-primary "
-                                    : "font-semibold"
+                            className={`text-xl transition-all duration-300 ${pathname === href
+                                ? "text-whtie font-bold border-b-2 pb-1 border-primary"
+                                : isScroll
+                                    ? "text-black"
+                                    : "text-white"
                                 }`}
                         >
                             {label}
                         </Link>
                     ))}
                 </div>
-<div className="flex items-center gap-5">
-    <div className="relative">
 
-                <BsCart4 onClick={() => router.push('/addToCart')} size={40} className="text-primary"/>
-                    <p className="absolute left-7 -top-1 bg-green-500 rounded-full text-white px-1">{total}</p>
-    </div>
-                <RxAvatar size={40} className="text-primary" />
-</div>
 
                 <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
                     {isOpen ? <BiX size={28} /> : <BiMenu size={28} />}

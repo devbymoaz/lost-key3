@@ -65,11 +65,12 @@ export default function NewsletterSection() {
             <div className="max-w-6xl mx-auto p-6">
                 <h1 className="text-4xl text-primary font-bold text-center mb-6">Best Sellers</h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {shopItems.map((item, index) => (
     <ShopCard
-        key={item.id ?? index} // Use item.id if available; otherwise, fallback to index
-        id={item.id} // Add this line
+    hoverImage='/Teste_die_Funktion.jpg'
+        key={item.id ?? index} 
+        id={item.id}  
         image={item.image}
         title={item.title}
         price={item.price}
@@ -79,6 +80,21 @@ export default function NewsletterSection() {
 
                 </div>
             </div>
+            <section className="bg-gray-100 py-12 px-6 lg:px-16 text-center lg:text-left">
+            <div className="max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold text-gray-800 mb-4">Privacy Policy</h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                    At <span className="font-semibold text-primary">Lost Key</span>, we prioritize your privacy and 
+                    are committed to protecting your personal information. Our platform is designed to ensure that 
+                    <span className="font-semibold"> no personal information is required</span> for key recovery, and 
+                    all communications are conducted through secure channels.
+                </p>
+                <p className="text-lg text-gray-600 mt-4 leading-relaxed">
+                    We use <span className="font-semibold">unique QR codes</span> to facilitate the seamless recovery 
+                    of lost keys, ensuring that your data remains confidential and secure.
+                </p>
+            </div>
+        </section>
         </>
     );
 }

@@ -4,7 +4,7 @@ interface NewsHeroSectionProps {
   imageSrc: string;
   title: string;
   subtitle: string;
-  overlayOpacity?: string; // Optional prop for opacity control
+  overlayOpacity?: string;  
 }
 
 export default function NewsHeroSection({
@@ -14,7 +14,7 @@ export default function NewsHeroSection({
   overlayOpacity = "bg-opacity-60", 
 }: NewsHeroSectionProps) {
   return (
-    <div className="relative w-full h-[40vh]">
+    <div className="relative w-full h-[50vh]">
       <Image
         src={imageSrc}
         alt="News Background"
@@ -25,7 +25,7 @@ export default function NewsHeroSection({
 
       <div className={`absolute inset-0 bg-primary ${overlayOpacity}`}></div>
 
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px- pt-6">
         <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
         <p className="text-lg md:text-xl mt-4 lg:w-[70%]">{subtitle}</p>
       </div>

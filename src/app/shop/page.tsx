@@ -10,6 +10,7 @@ export default function Page() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-6">
         {shopItems.map((item, index) => (
           <ShopCard
+          hoverImage="/Teste_die_Funktion.jpg"
             key={index}
             id={item.id}
             image={item.image}

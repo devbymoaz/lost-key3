@@ -30,7 +30,7 @@ export default function CustomHeroSection() {
 
 
   return (
-    <div className="relative w-full h-[50vh] overflow-hidden">
+    <div className="relative w-full h-[70vh] overflow-hidden">
       <div className="absolute inset-0">
         <motion.div
           key={currentIndex}
@@ -66,10 +66,10 @@ export default function CustomHeroSection() {
       </div>
 
       {/* Hero Text */}
-      <div className="absolute inset-0 flex flex-col justify-between items-center text-white text-center px-4 py-12">
+      <div className="absolute inset-0 flex flex-col justify-center gap-5 items-center text-white text-center px-4">
       <div>
   <motion.h1
-  style={{ textShadow: "2px 2px 15px rgba(0, 0, 0, 1)" }}
+  style={{ textShadow: "2px 2px 15px rgba(0, 0, 0, 0.5)" }}
     className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-xl"
     initial={{ opacity: 0, y: -20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -79,7 +79,7 @@ export default function CustomHeroSection() {
   </motion.h1>
 
   <motion.p
-  style={{ textShadow: "6px 6px 10px rgba(0, 0, 0, 1)" }}
+  style={{ textShadow: "6px 6px 10px rgba(0, 0, 0, 0.5)" }}
     className="text-base sm:text-lg md:text-2xl mt-4 font-bold text-white drop-shadow-lg"
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}

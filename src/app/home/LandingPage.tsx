@@ -1,5 +1,7 @@
 import CustomHeroSection from "../components/sections/heroSection";
 import Testimonials from "../components/sections/Testimonials";
+import EffortLessSection from "./EffortlessKey";
+import LostKeySection from "./LostKeySection";
 import NewsletterSection from "./NewsLetter";
 import OurMission from "./ourMission";
 import RegistrationProcess from "./RegistrationProcess";
@@ -14,8 +16,10 @@ export default function LandingPage() {
       <OurMission />
       <WhyLostKey/>
       <RegistrationProcess/>
-      <TryIt/>
       <SeaShop/>
+      <TryIt/>
+      <LostKeySection/>
+      <EffortLessSection/>
       <Testimonials/>
       <NewsletterSection/>
     </>
